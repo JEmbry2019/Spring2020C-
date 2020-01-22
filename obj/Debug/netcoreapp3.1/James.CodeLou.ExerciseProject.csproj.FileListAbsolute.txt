@@ -1,0 +1,11 @@
+C:\Users\jmsem\Desktop\Source\JAMES.CODELOU.EXERCISEPROJECT\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.csprojAssemblyReference.cache
+C:\Users\jmsem\Desktop\Source\JAMES.CODELOU.EXERCISEPROJECT\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.AssemblyInfoInputs.cache
+C:\Users\jmsem\Desktop\Source\JAMES.CODELOU.EXERCISEPROJECT\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.AssemblyInfo.cs
+C:\Users\jmsem\Desktop\Source\James.CodeLou.ExerciseProject\bin\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.exe
+C:\Users\jmsem\Desktop\Source\James.CodeLou.ExerciseProject\bin\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.deps.json
+C:\Users\jmsem\Desktop\Source\James.CodeLou.ExerciseProject\bin\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.runtimeconfig.json
+C:\Users\jmsem\Desktop\Source\James.CodeLou.ExerciseProject\bin\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.runtimeconfig.dev.json
+C:\Users\jmsem\Desktop\Source\James.CodeLou.ExerciseProject\bin\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.dll
+C:\Users\jmsem\Desktop\Source\James.CodeLou.ExerciseProject\bin\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.pdb
+C:\Users\jmsem\Desktop\Source\James.CodeLou.ExerciseProject\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.dll
+C:\Users\jmsem\Desktop\Source\James.CodeLou.ExerciseProject\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.pdb
