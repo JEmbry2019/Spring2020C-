@@ -6,6 +6,15 @@ namespace James.CodeLou.ExerciseProject
     {
         static void Main(string[] args)
         {
+            var inputtingStudent = true;
+            while (inputtingStudent) {
+                InputStudent();
+                Console.WriteLine("Would you like to continue inputting students? [Y/N]");
+                inputtingStudent = Console.ReadLine().ToLower() == "y";
+            }
+        }
+        static Student InputStudent()
+        {
     Console.WriteLine("Enter Student Id");
     var studentId = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Enter First Name");
@@ -32,6 +41,7 @@ namespace James.CodeLou.ExerciseProject
     Console.WriteLine($"Student Id | Name |  Class "); ;
     Console.WriteLine($"{studentRecord.StudentId} | {studentRecord.FirstName} {studentRecord.LastName} | {studentRecord.ClassName} "); ;
     Console.ReadKey();
+    return studentRecord;
 
         }
     }
