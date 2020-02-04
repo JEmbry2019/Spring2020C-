@@ -14,7 +14,7 @@ namespace James.CodeLou.ExerciseProject
             }
         }
 
-
+/*test*/
     
         static Student InputStudent()
         {
