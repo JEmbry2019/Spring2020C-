@@ -13,6 +13,8 @@ namespace James.CodeLou.ExerciseProject
                 inputtingStudent = Console.ReadLine().ToLower() == "y";
             }
         }
+
+        
         static Student InputStudent()
         {
     Console.WriteLine("Enter Student Id");
