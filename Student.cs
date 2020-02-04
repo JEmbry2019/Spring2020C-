@@ -1,4 +1,5 @@
 using System;
+
 namespace James.CodeLou.ExerciseProject
 {
     public class Student
@@ -10,5 +11,11 @@ namespace James.CodeLou.ExerciseProject
         public DateTimeOffset StartDate { get; set; }
         public string LastClassCompleted { get; set; }
         public DateTimeOffset LastClassCompletedOn { get; set; }
+
+
+        /*New Code*/
+        public string FullName => $"{FirstName} {LastName}";
+        public string StudentDisplay => $"{StudentId} | {FirstName} {LastName} | {ClassName} ";
+
     }
 }
