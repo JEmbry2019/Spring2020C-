@@ -14,7 +14,8 @@ namespace James.CodeLou.ExerciseProject
             }
         }
 
-        
+
+    
         static Student InputStudent()
         {
     Console.WriteLine("Enter Student Id");
