@@ -6,6 +6,7 @@ namespace James.CodeLou.ExerciseProject
 {
     class Program
     {
+     
         static void Main(string[] args)
         {
             var inputtingStudent = true;
@@ -13,7 +14,7 @@ namespace James.CodeLou.ExerciseProject
             var studentsDictionary = new Dictionary<string, Student>();
             while (inputtingStudent) 
             {
-               /* InputStudent();
+              /*  InputStudent();
                 Console.WriteLine("Would you like to continue inputting students? [Y/N]");
                 inputtingStudent = Console.ReadLine().ToLower() == "y";
                 */
@@ -73,7 +74,7 @@ namespace James.CodeLou.ExerciseProject
         }
 
         static void InputStudent(Dictionary<string, Student> studentsDictionary, List<Student> studentsList)
-        {     /*static Student InputStudent()   {*/
+        {    /* static Student InputStudent()  */ {
     Console.WriteLine("Enter Student Id");
     var studentId = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Enter First Name");
@@ -89,7 +90,7 @@ namespace James.CodeLou.ExerciseProject
     Console.WriteLine("Enter Start Date in format MM/dd/YYYY");
     var startDate = DateTimeOffset.Parse(Console.ReadLine());
 
-    var studentRecord = new Student();   /*May be var student = new student*/
+    var studentRecord = new Student();   
     studentRecord.StudentId = studentId;
     studentRecord.FirstName = studentFirstName;
     studentRecord.LastName = studentLastName;
@@ -99,12 +100,12 @@ namespace James.CodeLou.ExerciseProject
     studentRecord.LastClassCompletedOn = lastCompletedOn;
     Console.WriteLine($"Student Id | Name |  Class ");
    /* Console.WriteLine($"{studentRecord.StudentId} | {studentRecord.FirstName} {studentRecord.LastName} | {studentRecord.ClassName} "); */
-    Console.WriteLine(student.StudentDisplay);
+    Console.WriteLine(studentRecord.StudentDisplay);  /*changed student to studentRecord*/
     Console.ReadKey();
     /*return studentRecord;*/
-    studentsDictionary.Add(student.FullName, student);
+    studentsDictionary.Add(studentRecord.FullName, studentRecord);  /*changed student to studentRecord*/
     studentsList = studentsDictionary.Select(s => s.Value).ToList();
 
         }
     }
-}
+    } }
