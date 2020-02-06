@@ -39,8 +39,9 @@ namespace James.CodeLou.ExerciseProject
                 }   
             }
         }
+static List<Student> studentsList = new List<Student>();  /*NewCode*/
 
- private static void DisplayStudents(List<Student> studentsList)
+        private static void DisplayStudents(List<Student> studentsList)
         {
             Console.WriteLine($"Student Id | Name |  Class ");
             studentsList.ForEach(x =>
@@ -108,4 +109,5 @@ namespace James.CodeLou.ExerciseProject
 
         }
     }
+    
     } }
