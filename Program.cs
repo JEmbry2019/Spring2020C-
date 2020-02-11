@@ -13,7 +13,7 @@ namespace James.CodeLou.ExerciseProject
         {
             var inputtingStudent = true;
 
-             /*var studentRepository = new StudentRepository();*/
+            /* var studentRepository = new StudentRepository();  */
 
             while (inputtingStudent)
             {
@@ -56,7 +56,7 @@ namespace James.CodeLou.ExerciseProject
         {  System.Console.WriteLine("No students found.");
         } 
         } 
-        private static void DisplayStudents() => DisplayStudents(studentsList); 
+        /*private static void DisplayStudents() => DisplayStudents(studentsList);*/
           /*Search Functionality*/
         private static void SearchStudents(List<Student> studentsList) 
         {
@@ -133,10 +133,10 @@ namespace James.CodeLou.ExerciseProject
             student.LastClassCompletedOn = lastCompletedOn;
             
 
-            studentRepository.Add(student);
+           /* studentRepository.Add(student);
             DisplayStudents(studentRepository.Students);
                 /*New Code*/
-            studentsList.Add(studentRecord);
+            studentsList.Add(student);  /*(studentRecord);*/
         }
     }
 }

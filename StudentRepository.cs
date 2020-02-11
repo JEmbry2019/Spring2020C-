@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
-using src;
 
+ 
 namespace James.CodeLou.ExerciseProject
 {
     public class StudentRepository
