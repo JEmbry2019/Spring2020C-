@@ -13,7 +13,7 @@ namespace James.CodeLou.ExerciseProject
         {
             var inputtingStudent = true;
 
-            /* var studentRepository = new StudentRepository();  */
+            var studentRepository = new StudentRepository();  
 
             while (inputtingStudent)
             {
@@ -30,7 +30,7 @@ namespace James.CodeLou.ExerciseProject
 
                         break;
                     case 3:
-                        SearchStudents();
+                        SearchStudents(studentRepository.Students);
                         break;
                     case 4:
                         inputtingStudent = false;

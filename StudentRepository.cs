@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
+//using Newtonsoft.Json;
 
 
  
@@ -23,14 +25,15 @@ namespace James.CodeLou.ExerciseProject
         {
             using (var file = File.CreateText(_studentRepositoryPath))
             {
-                JsonSerializer serializer = new JsonSerializer();
+                //var serializer = new JsonSerializer();
                 //serialize object directly into file stream
-                serializer.Serialize(file, students);
+                var studentString = JsonSerializer.Serialize(students);
+                file.Write(studentString);
             }
         }
         
         public List<Student> Read() {
-            return  JsonConvert.DeserializeObject<List<Student>>(File.ReadAllText(_studentRepositoryPath));
+            return  JsonSerializer.Deserialize<List<Student>>(File.ReadAllText(_studentRepositoryPath));
         }
     }
 }
