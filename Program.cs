@@ -13,6 +13,8 @@ namespace James.CodeLou.ExerciseProject
         {
             var inputtingStudent = true;
 
+             /*var studentRepository = new StudentRepository();*/
+
             while (inputtingStudent)
             {
                 DisplayMenu();
@@ -21,10 +23,10 @@ namespace James.CodeLou.ExerciseProject
                 switch (int.Parse(option))
                 {
                     case 1:
-                        InputStudent();
+                        InputStudent();  /*(studentRepository); changed to () case 1*/
                         break;
                     case 2:
-                        DisplayStudents();
+                       DisplayStudents();/*(studentRepository.Student); changed to () case 2,3*/
 
                         break;
                     case 3:
@@ -36,35 +38,38 @@ namespace James.CodeLou.ExerciseProject
                 }
             }
         }
-
-        private static void DisplayStudents(List<Student> students)
+        private static void DisplayStudents() /*New LINQ Code*/
         {
+                DisplayStudents(studentsList);
+        }
+        private static void DisplayStudents(List<Student> studentsList)
+        {
+            if (studentsList.Any())
+            {
             Console.WriteLine($"Student Id | Name |  Class ");
             studentsList.ForEach(x =>
             {
                 Console.WriteLine(x.StudentDisplay);
             });
         }
-
-        private static void DisplayStudents() 
-        {
-            DisplayStudents(studentsList);
-        }
-
-
-        private static void SearchStudents()
+        else
+        {  System.Console.WriteLine("No students found.");
+        } 
+        } 
+        private static void DisplayStudents() => DisplayStudents(studentsList); 
+          /*Search Functionality*/
+        private static void SearchStudents(List<Student> studentsList) 
         {
             Console.WriteLine("Search string: Enter first and last name.");
             var searchString = Console.ReadLine();
             var students = studentsList.Where(x => x.FullName.Contains(searchString)).ToList();
             if (students.Any())
             {
-                DisplayStudents(students);
-            }
-            else 
-            {
-                System.Console.WriteLine("No students found which match this criteria.");
-                System.Console.WriteLine("Press 3 to Continue or press 4 to Exit.\n");
+                Console.WriteLine($"Student Id | Name |  Class ");
+                students.ForEach(x =>
+                {
+                    Console.WriteLine(x.StudentDisplay);
+                });
             }
         }
 
@@ -77,10 +82,33 @@ namespace James.CodeLou.ExerciseProject
             Console.WriteLine("4: Exit");
         }
 
-        static void InputStudent()
+        private static void InputStudent()   /*Old Code static void InputStudent(StudentRepository studentRepository)*/
         {
-            Console.WriteLine("Enter Student Id");
-            var studentId = Convert.ToInt32(Console.ReadLine());
+            var student = new Student();
+            
+            /*Console.WriteLine("Enter Student Id");
+            var studentId = Convert.ToInt32(Console.ReadLine());*/
+            /*New Code*/
+                        // Continue prompting the user for input until it is valid
+            while (true) 
+            {
+                // Prompt user
+                Console.WriteLine("Enter Student Id");
+                // Try to parse the user input 
+                var studentIdSuccessful = int.TryParse(Console.ReadLine(), out var studentId);
+                // If the input is valid 
+                if (studentIdSuccessful) 
+                {
+                    // Add input to the Student object 
+                    student.StudentId = studentId;    
+                    // Exit the loop
+                    break;
+                }
+
+                
+            }
+            
+            /*End New Code*/
             Console.WriteLine("Enter First Name");
             var studentFirstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name");
@@ -94,18 +122,21 @@ namespace James.CodeLou.ExerciseProject
             Console.WriteLine("Enter Start Date in format MM/dd/YYYY");
             var startDate = DateTimeOffset.Parse(Console.ReadLine());
 
-            var student = new Student();
-            student.StudentId = studentId;
+            /*var student = new Student  Moved to line 77*/
+            
+            /*student.StudentId = studentId;  Moved to line 96*/
             student.FirstName = studentFirstName;
             student.LastName = studentLastName;
             student.ClassName = className;
             student.StartDate = startDate;
             student.LastClassCompleted = lastClass;
             student.LastClassCompletedOn = lastCompletedOn;
-            Console.WriteLine($"Student Id | Name |  Class ");
-            Console.WriteLine(student.StudentDisplay);
-            Console.ReadKey();
-            studentsList.Add(student);
+            
+
+            studentRepository.Add(student);
+            DisplayStudents(studentRepository.Students);
+                /*New Code*/
+            studentsList.Add(studentRecord);
         }
     }
 }
