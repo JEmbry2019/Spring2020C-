@@ -26,11 +26,11 @@ namespace James.CodeLou.ExerciseProject
                         InputStudent();  /*(studentRepository); changed to () case 1*/
                         break;
                     case 2:
-                       DisplayStudents();/*(studentRepository.Student); changed to () case 2,3*/
+                       DisplayStudents();    /*(studentRepository.Students); /*changed to () case 2,3*/
 
                         break;
                     case 3:
-                        SearchStudents(studentRepository.Students);
+                        SearchStudents(studentsList: studentRepository.Students);
                         break;
                     case 4:
                         inputtingStudent = false;
@@ -117,10 +117,36 @@ namespace James.CodeLou.ExerciseProject
             var className = Console.ReadLine();
             Console.WriteLine("Enter Last Class Completed");
             var lastClass = Console.ReadLine();
+            /*Date Validation Loop Starts*/
+
             Console.WriteLine("Enter Last Class Completed Date in format MM/dd/YYYY");
             var lastCompletedOn = DateTimeOffset.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Start Date in format MM/dd/YYYY");
-            var startDate = DateTimeOffset.Parse(Console.ReadLine());
+           
+            /*Console.WriteLine("Enter Start Date in format MM/dd/YYYY");
+            var startDate = DateTimeOffset.Parse(Console.ReadLine());*/
+            
+
+ while (true) {
+     
+                Console.WriteLine("Enter Last Class Completed Date in format MM/dd/YYYY");
+                var lastCompletedOnSuccessful = DateTimeOffset.TryParse(Console.ReadLine(), out var lastClassCompletedOn);
+                if (lastCompletedOnSuccessful) {
+                    student.LastClassCompletedOn = lastClassCompletedOn;
+                    break;
+                }
+            } 
+            while (true) {
+                Console.WriteLine("Enter Start Date in format MM/dd/YYYY");
+                var startDateSuccessful = DateTimeOffset.TryParse(Console.ReadLine(), out var startDate);
+                if (startDateSuccessful) {
+                    student.StartDate = startDate;
+                    break;
+                }
+             
+
+
+
+            /*Loop Ends*/
 
             /*var student = new Student  Moved to line 77*/
             
@@ -132,11 +158,12 @@ namespace James.CodeLou.ExerciseProject
             student.LastClassCompleted = lastClass;
             student.LastClassCompletedOn = lastCompletedOn;
             
-
+            }  /*Date Validation Loop Ends*/
            /* studentRepository.Add(student);
             DisplayStudents(studentRepository.Students);
                 /*New Code*/
             studentsList.Add(student);  /*(studentRecord);*/
+            
         }
     }
 }
