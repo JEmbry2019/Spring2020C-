@@ -30,7 +30,7 @@ namespace James.CodeLou.ExerciseProject
 
                         break;
                     case 3:
-                        SearchStudents(studentsList: studentRepository.Students);
+                        SearchStudents(); //*(studentsList: studentRepository.Students);
                         break;
                     case 4:
                         inputtingStudent = false;
@@ -58,7 +58,7 @@ namespace James.CodeLou.ExerciseProject
         } 
         /*private static void DisplayStudents() => DisplayStudents(studentsList);*/
           /*Search Functionality*/
-        private static void SearchStudents(List<Student> studentsList) 
+        private static void SearchStudents() 
         {
             Console.WriteLine("Search string: Enter first and last name.");
             var searchString = Console.ReadLine();
@@ -119,8 +119,8 @@ namespace James.CodeLou.ExerciseProject
             var lastClass = Console.ReadLine();
             /*Date Validation Loop Starts*/
 
-            Console.WriteLine("Enter Last Class Completed Date in format MM/dd/YYYY");
-            var lastCompletedOn = DateTimeOffset.Parse(Console.ReadLine());
+           // Console.WriteLine("Enter Last Class Completed Date in format MM/dd/YYYY");
+           // var lastCompletedOn = DateTimeOffset.Parse(Console.ReadLine());
            
             /*Console.WriteLine("Enter Start Date in format MM/dd/YYYY");
             var startDate = DateTimeOffset.Parse(Console.ReadLine());*/
@@ -144,7 +144,7 @@ namespace James.CodeLou.ExerciseProject
                 }
              
 
-
+            }
 
             /*Loop Ends*/
 
@@ -153,12 +153,12 @@ namespace James.CodeLou.ExerciseProject
             /*student.StudentId = studentId;  Moved to line 96*/
             student.FirstName = studentFirstName;
             student.LastName = studentLastName;
-            student.ClassName = className;
-            student.StartDate = startDate;
-            student.LastClassCompleted = lastClass;
-            student.LastClassCompletedOn = lastCompletedOn;
             
-            }  /*Date Validation Loop Ends*/
+            student.ClassName = className;
+            student.LastClassCompleted = lastClass;
+            //student.LastClassCompletedOn = lastCompletedOn;
+            
+              /*Date Validation Loop Ends*/
            /* studentRepository.Add(student);
             DisplayStudents(studentRepository.Students);
                 /*New Code*/
