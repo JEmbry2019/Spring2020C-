@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace James.CodeLou.ExerciseProject
-/*New Branch Challenge2Solution Tuesday*/
+/*New Branch Challenge3Solution Monday Feb 24*/
 {
     class Program
     {
