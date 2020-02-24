@@ -1,20 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Text.Json;
 
 namespace James.CodeLou.ExerciseProject
 /*New Branch Challenge3Solution Monday Feb 24*/
 {
     class Program
     {
-        static List<Student> studentsList = new List<Student>();
+        static string _studentRepositoryPath = $"{AppDomain.CurrentDomain.BaseDirectory}\\students.json";
+       
+        static List<Student> studentsList = File.Exists(_studentRepositoryPath) ? Read() : new List<Student>();
+        static void Save()
+        {
+            using (var file = File.CreateText(_studentRepositoryPath))
+            {
+                file.WriteAsync(JsonSerializer.Serialize(studentsList));
+            }
+        }
 
+        static List<Student> Read() {
+            return  JsonSerializer.Deserialize<List<Student>>(File.ReadAllText(_studentRepositoryPath));
+        }
         static void Main(string[] args)
         {
             var inputtingStudent = true;
-
-            var studentRepository = new StudentRepository();  
-
+            //var studentRepository = new StudentRepository();  
             while (inputtingStudent)
             {
                 DisplayMenu();
@@ -38,39 +50,31 @@ namespace James.CodeLou.ExerciseProject
                 }
             }
         }
-        private static void DisplayStudents() /*New LINQ Code*/
+
+        private static void DisplayStudents(List<Student> students)
         {
-                DisplayStudents(studentsList);
-        }
-        private static void DisplayStudents(List<Student> studentsList)
-        {
-            if (studentsList.Any())
+            if (students.Any())
             {
             Console.WriteLine($"Student Id | Name |  Class ");
-            studentsList.ForEach(x =>
+            students.ForEach(x =>
             {
                 Console.WriteLine(x.StudentDisplay);
             });
         }
         else
-        {  System.Console.WriteLine("No students found.");
+        {  
+            System.Console.WriteLine("No students found.");
         } 
         } 
-        /*private static void DisplayStudents() => DisplayStudents(studentsList);*/
-          /*Search Functionality*/
-        private static void SearchStudents() 
+                  /*Search Functionality*/
+        private static void DisplayStudents() => DisplayStudents(studentsList);
+
+        private static void SearchStudents()
         {
             Console.WriteLine("Search string: Enter first and last name.");
             var searchString = Console.ReadLine();
-            var students = studentsList.Where(x => x.FullName.Contains(searchString)).ToList();
-            if (students.Any())
-            {
-                Console.WriteLine($"Student Id | Name |  Class ");
-                students.ForEach(x =>
-                {
-                    Console.WriteLine(x.StudentDisplay);
-                });
-            }
+             var students = studentsList.Where(x => x.FullName.ToLower().Contains(searchString.ToLower()) || x.ClassName.ToLower().Contains(searchString.ToLower()));
+            DisplayStudents(students.ToList());
         }
 
         private static void DisplayMenu()
@@ -85,30 +89,16 @@ namespace James.CodeLou.ExerciseProject
         private static void InputStudent()   /*Old Code static void InputStudent(StudentRepository studentRepository)*/
         {
             var student = new Student();
-            
-            /*Console.WriteLine("Enter Student Id");
-            var studentId = Convert.ToInt32(Console.ReadLine());*/
-            /*New Code*/
-                        // Continue prompting the user for input until it is valid
             while (true) 
-            {
-                // Prompt user
+            {      // Prompt user and parse input.
                 Console.WriteLine("Enter Student Id");
-                // Try to parse the user input 
                 var studentIdSuccessful = int.TryParse(Console.ReadLine(), out var studentId);
-                // If the input is valid 
                 if (studentIdSuccessful) 
                 {
-                    // Add input to the Student object 
-                    student.StudentId = studentId;    
-                    // Exit the loop
-                    break;
-                }
-
-                
+                    student.StudentId = studentId;   // Add input to the Student object  
+                    break;   // Exit the loop
+                }          
             }
-            
-            /*End New Code*/
             Console.WriteLine("Enter First Name");
             var studentFirstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name");
@@ -116,18 +106,8 @@ namespace James.CodeLou.ExerciseProject
             Console.WriteLine("Enter Class Name");
             var className = Console.ReadLine();
             Console.WriteLine("Enter Last Class Completed");
-            var lastClass = Console.ReadLine();
-            /*Date Validation Loop Starts*/
-
-           // Console.WriteLine("Enter Last Class Completed Date in format MM/dd/YYYY");
-           // var lastCompletedOn = DateTimeOffset.Parse(Console.ReadLine());
-           
-            /*Console.WriteLine("Enter Start Date in format MM/dd/YYYY");
-            var startDate = DateTimeOffset.Parse(Console.ReadLine());*/
-            
-
- while (true) {
-     
+            var lastClass = Console.ReadLine();       
+            while (true) {
                 Console.WriteLine("Enter Last Class Completed Date in format MM/dd/YYYY");
                 var lastCompletedOnSuccessful = DateTimeOffset.TryParse(Console.ReadLine(), out var lastClassCompletedOn);
                 if (lastCompletedOnSuccessful) {
@@ -143,27 +123,10 @@ namespace James.CodeLou.ExerciseProject
                     break;
                 }
              
-
             }
 
-            /*Loop Ends*/
-
-            /*var student = new Student  Moved to line 77*/
-            
-            /*student.StudentId = studentId;  Moved to line 96*/
-            student.FirstName = studentFirstName;
-            student.LastName = studentLastName;
-            
-            student.ClassName = className;
-            student.LastClassCompleted = lastClass;
-            //student.LastClassCompletedOn = lastCompletedOn;
-            
-              /*Date Validation Loop Ends*/
-           /* studentRepository.Add(student);
-            DisplayStudents(studentRepository.Students);
-                /*New Code*/
-            studentsList.Add(student);  /*(studentRecord);*/
-            
+            studentsList.Add(student);  
+            Save();            
         }
     }
 }
