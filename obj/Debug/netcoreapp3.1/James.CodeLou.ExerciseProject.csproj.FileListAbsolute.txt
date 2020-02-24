@@ -20,3 +20,5 @@ C:\Users\jmsem\desktop\repos\James.CodeLou.ExerciseProject\obj\Debug\netcoreapp3
 C:\Users\jmsem\desktop\repos\James.CodeLou.ExerciseProject\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.AssemblyInfo.cs
 C:\Users\jmsem\desktop\repos\James.CodeLou.ExerciseProject\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.dll
 C:\Users\jmsem\desktop\repos\James.CodeLou.ExerciseProject\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.pdb
+C:\Users\jmsem\Desktop\repos\James.CodeLou.ExerciseProject\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\jmsem\Desktop\repos\James.CodeLou.ExerciseProject\obj\Debug\netcoreapp3.1\James.CodeLou.ExerciseProject.csproj.CopyComplete
