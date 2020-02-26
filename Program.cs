@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Text.Json;
-
 namespace James.CodeLou.ExerciseProject
 /*New Branch Challenge3Solution Monday Feb 24*/
 {
     class Program
     {
+        //static List<Student> studentsList = new List<Student>();
         static string _studentRepositoryPath = $"{AppDomain.CurrentDomain.BaseDirectory}\\students.json";
-       
         static List<Student> studentsList = File.Exists(_studentRepositoryPath) ? Read() : new List<Student>();
-        static void Save()
+       
+        static void Save() 
         {
-            using (var file = File.CreateText(_studentRepositoryPath))
-            {
-                file.WriteAsync(JsonSerializer.Serialize(studentsList));
-            }
-        }
-
+             using (var file = File.CreateText(_studentRepositoryPath))
+              {
+                  file.WriteAsync(JsonSerializer.Serialize(studentsList));
+              }
+          }
+        
         static List<Student> Read() {
             return  JsonSerializer.Deserialize<List<Student>>(File.ReadAllText(_studentRepositoryPath));
         }
@@ -73,7 +73,7 @@ namespace James.CodeLou.ExerciseProject
         {
             Console.WriteLine("Search string: Enter first and last name.");
             var searchString = Console.ReadLine();
-             var students = studentsList.Where(x => x.FullName.ToLower().Contains(searchString.ToLower()) || x.ClassName.ToLower().Contains(searchString.ToLower()));
+            var students = studentsList.Where(x => x.FullName.ToLower().Contains(searchString.ToLower()) || x.ClassName.ToLower().Contains(searchString.ToLower()));
             DisplayStudents(students.ToList());
         }
 
@@ -128,5 +128,15 @@ namespace James.CodeLou.ExerciseProject
             studentsList.Add(student);  
             Save();            
         }
+        //   private static void Save()
+        //   {
+        //   throw new NotImplementedException();
+        //   }
+          
+           
+        
     }
 }
+
+//static List<Student> Write() {
+ // return  JsonSerializer.Serialize<List<Student>>(File.CreateText(_studentRepositoryPath).Write(serialiedStudentsList);
