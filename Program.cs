@@ -104,7 +104,7 @@ namespace James.CodeLou.ExerciseProject
             Console.WriteLine("Enter Last Name");
             student.LastName = Console.ReadLine();
             Console.WriteLine("Enter Class Name");
-            var className = Console.ReadLine();
+            student.ClassName = Console.ReadLine();
             Console.WriteLine("Enter Last Class Completed");
             var lastClass = Console.ReadLine();       
             while (true) {
